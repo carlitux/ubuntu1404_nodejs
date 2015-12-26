@@ -12,7 +12,7 @@ RUN apt-get install --yes nodejs
 # Install and configure ArangoDB 2.2
 RUN DEBIAN_FRONTEND=noninteractive && \
     cd /tmp && \
-    wget https://www.arangodb.org/repositories/arangodb2/xUbuntu_14.04/Release.key && \
+    curl -sL https://www.arangodb.org/repositories/arangodb2/xUbuntu_14.04/Release.key && \
     apt-key add - < Release.key && \
     echo 'deb https://www.arangodb.org/repositories/arangodb2/xUbuntu_14.04/ /' >> /etc/apt/sources.list.d/arangodb.list
 
