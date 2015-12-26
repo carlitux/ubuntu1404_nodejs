@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y \
     curl;
 
 # Install a default nodejs for the system
-curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 
 # Force NVM_DIR so the installations go to the right place
 ENV NVM_DIR /root/.nvm
