@@ -5,9 +5,7 @@ RUN apt-get update && apt-get install -y \
     curl;
 
 # Install a default nodejs for the system
-RUN add-apt-repository -y ppa:chris-lea/node.js && \
-    apt-get update && \
-    apt-get install -y nodejs;
+curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 
 # Force NVM_DIR so the installations go to the right place
 ENV NVM_DIR /root/.nvm
@@ -16,10 +14,13 @@ ENV NVM_DIR /root/.nvm
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.17.2/install.sh | bash
 
 # Preinstall common node versions
-RUN . /root/.nvm/nvm.sh && nvm install 0.8;
-RUN . /root/.nvm/nvm.sh && nvm install 0.10;
-RUN . /root/.nvm/nvm.sh && nvm install 0.11;
-RUN . /root/.nvm/nvm.sh && nvm install 0.12;
-RUN . /root/.nvm/nvm.sh && nvm alias default 0.10;
+RUN . /root/.nvm/nvm.sh && nvm install 4.2.3;
+RUN . /root/.nvm/nvm.sh && nvm alias default 4.2.3;
+
+RUN wget https://www.arangodb.com/repositories/arangodb2/xUbuntu_14.04/Release.key apt-key add - < Release.key
+RUN echo 'deb https://www.arangodb.com/repositories/arangodb2/xUbuntu_14.04/ /' | sudo tee /etc/apt/sources.list.d/arangodb.list
+RUN apt-get install apt-transport-https -y
+RUN apt-get update
+RUN apt-get install arangodb=2.7.3 -y
 
 CMD [ "node" ]
