@@ -17,7 +17,7 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.17.2/install.sh | b
 RUN . /root/.nvm/nvm.sh && nvm install 4.2.3;
 RUN . /root/.nvm/nvm.sh && nvm alias default 4.2.3;
 
-RUN wget https://www.arangodb.com/repositories/arangodb2/xUbuntu_14.04/Release.key apt-key add - < Release.key
+RUN wget -q https://www.arangodb.com/repositories/arangodb2/xUbuntu_14.04/Release.key -O- | sudo apt-key add -
 RUN echo 'deb https://www.arangodb.com/repositories/arangodb2/xUbuntu_14.04/ /' | sudo tee /etc/apt/sources.list.d/arangodb.list
 RUN apt-get install apt-transport-https -y
 RUN apt-get update
