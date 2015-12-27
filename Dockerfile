@@ -21,4 +21,11 @@ RUN apt-get install apt-transport-https -y
 RUN apt-get install --yes nodejs
 RUN apt-get install arangodb=2.7.3 -y
 
+# retain the database directory and the Foxx Application directory
+VOLUME ["/var/lib/arangodb", "/var/lib/arangodb-apps"]
+
+# standard port
+EXPOSE 8529
+
+CMD ["/usr/sbin/arangod"]
 CMD [ "node" ]
