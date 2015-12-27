@@ -28,3 +28,4 @@ VOLUME ["/var/lib/arangodb", "/var/lib/arangodb-apps"]
 
 # standard port
 EXPOSE 8529
+
