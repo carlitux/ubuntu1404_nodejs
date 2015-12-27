@@ -35,4 +35,3 @@ VOLUME ["/var/lib/arangodb", "/var/lib/arangodb-apps"]
 EXPOSE 8529
 
 CMD ["/usr/sbin/arangod && while ! echo exit | nc localhost 8529; do sleep 10; done"]
-
