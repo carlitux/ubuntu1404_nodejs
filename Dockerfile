@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
 
 # Install a default nodejs for the system
 RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
-RUN apt-add-repository ppa:ansible/ansible -y
+# RUN apt-add-repository ppa:ansible/ansible -y
 
 # Install and configure ArangoDB 2.2
 RUN DEBIAN_FRONTEND=noninteractive && \
@@ -16,10 +16,11 @@ RUN DEBIAN_FRONTEND=noninteractive && \
 
 RUN apt-get update
 
-RUN apt-get install ansible -y
+# RUN apt-get install ansible -y
 RUN apt-get install apt-transport-https -y
 RUN apt-get install nodejs -y
 RUN apt-get install arangodb -y
+RUN pip install ansible
 
 # retain the database directory and the Foxx Application directory
 VOLUME ["/var/lib/arangodb", "/var/lib/arangodb-apps"]
