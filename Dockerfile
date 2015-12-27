@@ -21,6 +21,13 @@ RUN apt-get install apt-transport-https -y
 RUN apt-get install --yes nodejs
 RUN apt-get install arangodb=2.7.3 -y
 
+RUN sed -ri \
+# https://docs.arangodb.com/ConfigureArango/Arangod.html
+        -e 's!127\.0\.0\.1!0.0.0.0!g' \
+# https://docs.arangodb.com/ConfigureArango/Logging.html
+        -e 's!^(file\s*=).*!\1 -!' \
+        /etc/arangodb/arangod.conf
+
 # retain the database directory and the Foxx Application directory
 VOLUME ["/var/lib/arangodb", "/var/lib/arangodb-apps"]
 
