@@ -34,6 +34,5 @@ VOLUME ["/var/lib/arangodb", "/var/lib/arangodb-apps"]
 # standard port
 EXPOSE 8529
 
-CMD ["/usr/sbin/arangod"]
+CMD ["/usr/sbin/arangod && while ! echo exit | nc localhost 8529; do sleep 10; done"]
 
-HEALTHCHECK nc -z localhost 8529 
