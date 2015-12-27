@@ -21,7 +21,6 @@ RUN apt-get install apt-transport-https -y
 RUN apt-get install --yes nodejs
 RUN apt-get install arangodb=2.7.3 -y
 
-RUN rm /bin/sh
 RUN ln -s /bin/bash /bin/sh
 
 # retain the database directory and the Foxx Application directory
