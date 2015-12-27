@@ -35,3 +35,5 @@ VOLUME ["/var/lib/arangodb", "/var/lib/arangodb-apps"]
 EXPOSE 8529
 
 CMD ["/usr/sbin/arangod"]
+
+HEALTHCHECK nc -z localhost 8529 
