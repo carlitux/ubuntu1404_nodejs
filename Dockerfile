@@ -20,6 +20,7 @@ RUN apt-get update
 RUN apt-get install apt-transport-https -y
 RUN apt-get install nodejs -y
 RUN apt-get install arangodb -y
+RUN apt-get install python-dev -y
 RUN pip install ansible
 
 # retain the database directory and the Foxx Application directory
